@@ -1,0 +1,39 @@
+{
+  "name": "mix-bitch",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 7710 --host",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --port 7710 --host",
+    "start": "node server.cjs",
+    "start:preview": "vite preview --port 7710 --host",
+    "lint": "tsc -b --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run"
+  },
+  "overrides": {
+    "serialize-javascript": ">=7.0.3"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "framer-motion": "^11.11.17",
+    "http-proxy-middleware": "^3.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.15",
+    "typescript": "~5.6.2",
+    "vite": "^7.3.1",
+    "vite-plugin-pwa": "^0.19.8",
+    "vitest": "^4.0.18"
+  }
+}

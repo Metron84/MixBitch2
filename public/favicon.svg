@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Card -->
+  <rect width="32" height="32" rx="5" ry="5" fill="#FFFEF8" stroke="#006233" stroke-width="1.5"/>
+  <!-- Small cedar: top left -->
+  <g transform="translate(6, 6) scale(0.22) translate(-12, -12)">
+    <path d="M12 3L4 18h5l-1 4h8l-1-4h5L12 3z" fill="#006233"/>
+    <rect x="10.5" y="18" width="3" height="3" rx="0.5" fill="#006233"/>
+  </g>
+  <!-- Small cedar: bottom right -->
+  <g transform="translate(26, 26) scale(0.22) translate(-12, -12)">
+    <path d="M12 3L4 18h5l-1 4h8l-1-4h5L12 3z" fill="#006233"/>
+    <rect x="10.5" y="18" width="3" height="3" rx="0.5" fill="#006233"/>
+  </g>
+  <!-- Dual mind (Kahneman): triangle = strategy / System 2, arc = intuition / System 1 -->
+  <path d="M16 10 L10 23 L22 23 Z" fill="#006233"/>
+  <path d="M23 16 A 6 6 0 0 1 17 22 A 6 6 0 0 1 23 16" fill="none" stroke="#006233" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

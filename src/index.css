@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Lebanon-centric: cedar + white lead; red accent (panel: cedar = identity). Contrast: cedar-dark/text-primary on white/felt and white on cedar meet WCAG AA. */
+  --color-cedar: #00A651;
+  --color-cedar-dark: #006233;
+  --color-cedar-light: #E8F5E9;
+  --color-lebanon-red: #CE1126;
+  --color-lebanon-white: #FFFFFF;
+  --color-felt: #FFFFFF;
+  --color-felt-light: #F8F9FA;
+  --color-wood: #006233;
+  --color-wood-frame: #00A651;
+  --color-wood-light: #00A651;
+  --color-table: #00A651;
+  --color-cream: #F5F5DC;
+  --color-gold: #00A651;
+  --color-danger: #c53030;
+  --text-primary: #1B5E20;
+  --text-secondary: #2E7D32;
+  --text-on-cream: #2d2318;
+  --text-on-cedar: #FFFFFF;
+  --bg-primary: #E8F5E9;
+  --bg-secondary: #00A651;
+  --accent-gold: #00A651;
+  --success-green: #00A651;
+  --danger-red: #c53030;
+
+  /* Fluid card sizing: same ratio for all; smaller max so cards fit the box */
+  --card-width-base: clamp(28px, 10vw, 72px);
+  --card-height-base: calc(var(--card-width-base) * 1.35);
+  --card-width-compact: clamp(24px, 8vw, 58px);
+  --card-height-compact: calc(var(--card-width-compact) * 1.35);
+  --card-width-extra-compact: clamp(24px, 7vw, 52px);
+  --card-height-extra-compact: calc(var(--card-width-extra-compact) * 1.35);
+  --card-width-micro: 24px;
+  --card-height-micro: 32px;
+
+  /* Zone gaps and card overlap */
+  --zone-gap-base: clamp(8px, 2vw, 16px);
+  --zone-gap-compact: clamp(4px, 1.5vw, 12px);
+  --zone-gap-extra-compact: clamp(2px, 1vw, 8px);
+  --card-overlap-base: 8px;
+  --card-overlap-compact: 6px;
+  --card-overlap-extra-compact: 4px;
+}
+
+/* Mobile layout: larger minimums so cards and zones stay usable (layout only) */
+@media (max-width: 768px) {
+  :root {
+    --card-width-base: clamp(36px, 12vw, 72px);
+    --card-height-base: calc(var(--card-width-base) * 1.35);
+    --card-width-compact: clamp(32px, 10vw, 58px);
+    --card-height-compact: calc(var(--card-width-compact) * 1.35);
+    --card-width-extra-compact: clamp(30px, 9vw, 52px);
+    --card-height-extra-compact: calc(var(--card-width-extra-compact) * 1.35);
+    --card-width-micro: 28px;
+    --card-height-micro: 38px;
+    --zone-gap-base: clamp(10px, 2.5vw, 16px);
+    --zone-gap-compact: clamp(8px, 2vw, 12px);
+    --zone-gap-extra-compact: clamp(6px, 1.5vw, 8px);
+    --card-overlap-base: 8px;
+    --card-overlap-compact: 6px;
+    --card-overlap-extra-compact: 5px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Lexend', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Lebanon-centric: cedar table, white zones, red accent stripe */
+.bg-table {
+  background-color: var(--bg-primary);
+  background-image: linear-gradient(180deg, var(--color-cedar-light) 0%, rgba(0, 166, 81, 0.12) 50%, var(--color-cedar-light) 100%);
+  border-top: 4px solid var(--color-lebanon-red);
+}
+
+/* Page 2 sticky header: same light cedar as page, consistent with bottom section */
+.bg-setup-header {
+  background-color: var(--bg-primary);
+  background-image: linear-gradient(180deg, var(--color-cedar-light) 0%, rgba(0, 166, 81, 0.12) 50%, var(--color-cedar-light) 100%);
+}
+
+.bg-felt {
+  background-color: var(--color-felt);
+  background-image:
+    linear-gradient(180deg, rgba(0, 166, 81, 0.04) 0%, transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  border-left: 3px solid var(--color-cedar);
+  border-right: 3px solid var(--color-cedar);
+}
+
+.bg-wood {
+  background-color: var(--color-cedar-dark);
+  background-image: linear-gradient(180deg, var(--color-cedar) 0%, var(--color-cedar-dark) 100%);
+}
+
+/* Page 3 play area: full green gradient + felt texture + center vignette */
+.bg-play-area {
+  background: linear-gradient(135deg, var(--color-cedar-dark) 0%, var(--color-cedar) 100%);
+  position: relative;
+}
+
+.bg-play-area::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.04) 2px,
+      rgba(0, 0, 0, 0.04) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 3px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 6px,
+      rgba(255, 255, 255, 0.015) 6px,
+      rgba(255, 255, 255, 0.015) 7px
+    );
+  pointer-events: none;
+}
+
+/* Vignette: darker ring around the play area edges */
+.bg-play-area::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    transparent 40%,
+    rgba(0, 40, 20, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+/* Selected/Play card value: Lebanon red so second number is distinct from count */
+.selected-card-value {
+  color: var(--color-lebanon-red) !important;
+}
+
+/* Your turn: subtle pulse on human zone when it's their turn */
+@keyframes zone-your-turn-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(0, 166, 81, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(0, 166, 81, 0.12); }
+}
+
+.zone-your-turn-pulse {
+  animation: zone-your-turn-pulse 1.5s ease-in-out infinite;
+}
+
+/* Center circle: soft "waiting" when bot is thinking */
+@keyframes center-waiting {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+.center-waiting {
+  animation: center-waiting 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zone-your-turn-pulse,
+  .center-waiting {
+    animation: none;
+  }
+}
+
+/* Cedar glow; deeper inset for physical table feel; red accent */
+.table-glow {
+  box-shadow:
+    0 0 60px rgba(0, 166, 81, 0.2),
+    inset 0 0 120px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px rgba(0, 0, 0, 0.06),
+    0 -2px 0 0 var(--color-lebanon-red);
+}
+
+/* Player zone panels: extra depth on the felt */
+.zone-panel {
+  box-shadow: 0 4px 14px rgba(0, 98, 51, 0.15), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Card hover glow: subtle default lift; suit-specific glow set via framer-motion */
+.card-hover-glow {
+  transition: box-shadow 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-hover-glow {
+    transition: none;
+  }
+}
+
+/* ─── Dark Mode ─── */
+
+.dark {
+  --color-table: #1a2e1a;
+  --color-felt: #2d3a2d;
+  --color-felt-light: #354535;
+  --color-cedar-light: #1e3220;
+  --bg-primary: #1a2e1a;
+  --bg-secondary: #006233;
+  --text-primary: #c8e6c9;
+  --text-secondary: #a5d6a7;
+  --text-on-cream: #e0e0e0;
+  --color-cream: #2d3a2d;
+}
+
+.dark .bg-table {
+  background-color: #1a2e1a;
+  background-image: linear-gradient(180deg, #1a2e1a 0%, rgba(0, 80, 40, 0.15) 50%, #1a2e1a 100%);
+  border-top-color: var(--color-lebanon-red);
+}
+
+.dark .bg-setup-header {
+  background-color: #1a2e1a;
+  background-image: linear-gradient(180deg, #1e3220 0%, rgba(0, 80, 40, 0.15) 50%, #1e3220 100%);
+}
+
+.dark .bg-felt {
+  background-color: #2d3a2d;
+  background-image:
+    linear-gradient(180deg, rgba(0, 100, 50, 0.06) 0%, transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 4px
+    );
+  border-left-color: #4a7c4a;
+  border-right-color: #4a7c4a;
+}
+
+.dark .bg-play-area {
+  background: linear-gradient(135deg, #0d1f0d 0%, #1a3a1a 100%);
+}
+
+.dark .bg-play-area::after {
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    transparent 30%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+.dark .table-glow {
+  box-shadow:
+    0 0 60px rgba(0, 100, 40, 0.15),
+    inset 0 0 120px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1),
+    0 -2px 0 0 var(--color-lebanon-red);
+}
+
+.dark .zone-panel {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode text overrides: swap cedar-dark (dark green on light) for readable light green */
+.dark .text-cedar-dark {
+  color: #a5d6a7;
+}
+
+.dark .text-cedar-dark\/80 {
+  color: rgba(165, 214, 167, 0.85);
+}
+
+.dark .text-cedar-dark\/90 {
+  color: rgba(165, 214, 167, 0.92);
+}
+
+.dark .text-cedar-dark\/75 {
+  color: rgba(165, 214, 167, 0.8);
+}
+
+.dark .text-cedar-dark\/70 {
+  color: rgba(165, 214, 167, 0.75);
+}
+
+.dark .text-text-primary {
+  color: #c8e6c9;
+}
+
+.dark .text-text-secondary {
+  color: #a5d6a7;
+}
+
+.dark .border-cedar\/30 {
+  border-color: rgba(0, 166, 81, 0.35);
+}
+
+.dark .border-cedar\/40 {
+  border-color: rgba(0, 166, 81, 0.4);
+}
+
+.dark .border-cedar\/50 {
+  border-color: rgba(74, 124, 74, 0.6);
+}
+
+/* On green buttons, keep text white for contrast (overrides the general text-cedar-dark → light rule) */
+.dark .bg-cedar.text-cedar-dark {
+  color: #ffffff;
+}
+
+.dark .bg-cedar-light {
+  background-color: #1e3220;
+}
+
+.dark .bg-cedar-dark\/95 {
+  background-color: rgba(13, 31, 13, 0.95);
+}
+
+.dark .bg-felt\/95 {
+  background-color: rgba(45, 58, 45, 0.95);
+}
