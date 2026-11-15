@@ -31,6 +31,8 @@ export interface BotPersona {
   readonly description?: string
   /** Three short bullet points for the selector card. */
   readonly bullets?: readonly [string, string, string]
+  /** Set for opponents built from the master thinkers database. */
+  readonly thinker?: { readonly id: string; readonly era: string; readonly domain: string }
 }
 
 export interface Player {

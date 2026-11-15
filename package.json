@@ -11,7 +11,12 @@
     "start:preview": "vite preview --port 7710 --host",
     "lint": "tsc -b --noEmit",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "thinkers:pull": "node scripts/pull-thinkers.mjs",
+    "thinkers:bots": "node scripts/build-thinker-bots.mjs",
+    "prebuild": "npm run thinkers:pull && npm run thinkers:bots",
+    "predev": "npm run thinkers:pull && npm run thinkers:bots",
+    "prelint": "npm run thinkers:bots"
   },
   "overrides": {
     "serialize-javascript": ">=7.0.3"
