@@ -153,6 +153,11 @@ export function OpponentSelector({
                 )}
               </div>
               <span className={`text-xs mt-0.5 ${isSelected ? 'text-cedar-dark dark:text-green-200 font-medium' : 'text-cedar-dark/90 dark:text-green-300'}`}>{p.archetype}</span>
+              {p.thinker && (
+                <span className="mt-1 self-start rounded-full bg-lebanon-red/10 text-lebanon-red px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide">
+                  Thinker
+                </span>
+              )}
               {p.bullets ? (
                 <ul className={`text-xs mt-1 list-disc list-inside space-y-0.5 ${isSelected ? 'text-cedar-dark dark:text-green-200' : 'text-cedar-dark/90 dark:text-green-300'}`}>
                   {p.bullets.map((b, i) => (

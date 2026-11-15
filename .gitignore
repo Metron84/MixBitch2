@@ -1,0 +1,9 @@
+/node_modules/
+/dist/
+.env*.local
+.vercel
+
+# thinkers master data, pulled at build time (thinkers-apps holds the only copy)
+/.thinkers/
+/src/data/thinkerBots.generated.json
+*.tsbuildinfo

@@ -1,6 +1,7 @@
 import type { BotPersona } from '../types/game'
+import thinkerBots from './thinkerBots.generated.json'
 
-export const AI_PERSONAS: BotPersona[] = [
+const BASE_PERSONAS: BotPersona[] = [
   { name: 'Amira', archetype: 'The Strategist', playStyle: 'calculated', riskTolerance: 0.3, aggressiveness: 0.4, adaptability: 0.8, catchphrases: ['Let me think...', 'Interesting move', 'I see what you\'re doing'], description: 'A thoughtful architect who treats every hand like a blueprint. Sips her coffee slowly and never rushes a decision.', bullets: ['Treats every hand like a blueprint', 'Never rushes a decision', 'Thoughtful and calculated'] },
   { name: 'Khalil', archetype: 'The Gambler', playStyle: 'aggressive', riskTolerance: 0.8, aggressiveness: 0.9, adaptability: 0.6, catchphrases: ['All or nothing!', 'Fortune favors the bold', 'Let\'s make this interesting'], description: 'Lives for the thrill of the big play. His infectious energy makes every game memorable, win or lose.', bullets: ['Lives for the big play', 'Infectious energy', 'Memorable win or lose'] },
   { name: 'Layla', archetype: 'The Observer', playStyle: 'adaptive', riskTolerance: 0.5, aggressiveness: 0.3, adaptability: 0.9, catchphrases: ['I\'m watching you', 'Patience is key', 'Everything reveals itself'], description: 'Quiet but perceptive, she reads people like open books. Her gentle demeanor hides a sharp tactical mind.', bullets: ['Reads people like open books', 'Gentle but sharp', 'Patient and perceptive'] },
@@ -22,6 +23,11 @@ export const AI_PERSONAS: BotPersona[] = [
   { name: 'Rana', archetype: 'The Challenger', playStyle: 'provocative', riskTolerance: 0.7, aggressiveness: 0.8, adaptability: 0.6, catchphrases: ['Bring it on!', 'You think you can beat me?', 'Challenge accepted'], description: 'Thrives on competition and pushes others to excel. Her bold challenges elevate everyone\'s game to new heights.', bullets: ['Thrives on competition', 'Pushes others to excel', 'Elevates everyone\'s game'] },
   { name: 'Nadim', archetype: 'The Scholar', playStyle: 'studious', riskTolerance: 0.3, aggressiveness: 0.3, adaptability: 0.7, catchphrases: ['Fascinating strategy', 'I\'ve studied this', 'Knowledge is power'], description: 'Has read every card game book ever written. His deep theoretical knowledge translates into surprisingly effective practical play.', bullets: ['Read every card game book', 'Deep theoretical knowledge', 'Effective practical play'] },
 ]
+
+/** Thinker opponents come from the master thinkers database at build time; empty when it is unavailable. */
+export const THINKER_PERSONAS = thinkerBots as unknown as BotPersona[]
+
+export const AI_PERSONAS: BotPersona[] = [...BASE_PERSONAS, ...THINKER_PERSONAS]
 
 function shuffle<T>(arr: T[]): T[] {
   const out = [...arr]
